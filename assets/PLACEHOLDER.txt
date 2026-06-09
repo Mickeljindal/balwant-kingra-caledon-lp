@@ -1,0 +1,10 @@
+Drop the image assets here (WebP recommended). Required filenames:
+
+  hero.webp              CaledonClub / Mayfield & Gore render (hero background)
+  caledonclub.webp       CaledonClub exterior render (Property Card 1)
+  mayfield-gore.webp     Mayfield & Gore Road render (Property Card 2)
+  balwant-headshot.webp  Balwant's professional headshot
+  remax-logo-white.webp  REMAX Excellence logo, WHITE version (for dark sections)
+
+Until these are added the image slots will appear blank/broken — that is expected.
+See ../README.md for full setup instructions.
