@@ -435,7 +435,13 @@ a { color: inherit; }
 .about__bio { color: #cdd5de; margin: 0 0 18px; }
 .about__stars { color: #FFC107; font-size: 20px; letter-spacing: 2px; margin: 0 0 18px; }
 .about__reviews { color: #b9c2cc; font-size: 14px; letter-spacing: 0; vertical-align: middle; }
-.about__remax { margin: 0 0 22px; height: auto; }
+.about__remax {
+  margin: 0 0 22px;
+  height: auto;
+  background: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
 
 /* ============ SECTION 7 — LEAD FORM ============ */
 .form { margin-top: 8px; }
@@ -545,6 +551,11 @@ a { color: inherit; }
 .footer__col a { color: #cdd5de; text-decoration: none; }
 .footer__col a:hover { color: #fff; text-decoration: underline; }
 .footer__col--logo { display: flex; align-items: flex-start; }
+.footer__col--logo img {
+  background: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
 .footer__strip { background: #081320; }
 .footer__strip p {
   font-size: 12px;
