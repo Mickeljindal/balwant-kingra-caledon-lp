@@ -153,6 +153,20 @@ a { color: inherit; }
   font-size: 17px;
   color: var(--navy);
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.nav__logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+.nav__logo-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
 }
 .nav__dot { color: var(--red); }
 .nav__cta { padding: 10px 18px; font-size: 15px; }
@@ -228,6 +242,117 @@ a { color: inherit; }
   font-size: 13px;
   color: #b9c2cc;
 }
+
+/* ============ TOP ANNOUNCEMENT / FOMO BAR ============ */
+.announce {
+  background: var(--red);
+  color: #fff;
+  font-size: 14px;
+}
+.announce__inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 9px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+.announce__dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: #fff;
+  flex-shrink: 0;
+  animation: announce-pulse 1.4s ease-in-out infinite;
+}
+@keyframes announce-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .4; transform: scale(.7); }
+}
+.announce__text strong { font-weight: 700; }
+
+/* ============ FOMO / URGENCY STRIP ============ */
+.urgency {
+  background: var(--navy);
+  color: #fff;
+  padding: 28px 0;
+}
+.urgency__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.urgency__left { flex: 1; min-width: 280px; }
+.urgency__pill {
+  display: inline-block;
+  background: var(--amber);
+  color: var(--amber-text);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+.urgency__text { margin: 0; font-size: 16px; color: #e6ebf1; line-height: 1.55; }
+.urgency__text strong { color: #fff; }
+.urgency__stats { display: flex; gap: 28px; }
+.urgency__stat { text-align: center; }
+.urgency__num {
+  display: block;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--red);
+  line-height: 1.1;
+}
+.urgency__label { font-size: 12px; color: #b9c2cc; }
+
+/* ============ EMOTIONAL CONNECT ============ */
+.emotion { text-align: center; }
+.emotion__pill { margin-bottom: 14px; }
+.emotion__heading { margin-bottom: 22px; }
+.emotion__lead {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.5;
+  margin: 0 auto 20px;
+  max-width: 720px;
+}
+.emotion__body {
+  font-size: 17px;
+  color: var(--text);
+  line-height: 1.65;
+  margin: 0 auto 18px;
+  max-width: 720px;
+}
+.emotion__quote {
+  background: var(--grey);
+  border-left: 4px solid var(--red);
+  border-radius: 8px;
+  padding: 24px 28px;
+  margin: 32px auto;
+  max-width: 680px;
+  text-align: left;
+}
+.emotion__quote p {
+  font-size: 18px;
+  font-style: italic;
+  color: var(--navy);
+  margin: 0 0 12px;
+  line-height: 1.55;
+}
+.emotion__quote cite {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+.emotion__cta { margin-top: 8px; }
 
 /* ============ IMAGE GALLERY — infinite scroll ============ */
 .gallery {
@@ -686,6 +811,13 @@ a { color: inherit; }
 
   .proof-bar__grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .proof-bar__number { font-size: 20px; }
+
+  .urgency__inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .urgency__stats { width: 100%; justify-content: space-around; }
+  .emotion__lead { font-size: 18px; }
+  .emotion__body { font-size: 16px; }
+  .announce { font-size: 13px; }
+  .announce__inner { padding: 8px 16px; }
 
   .cards { grid-template-columns: 1fr; gap: 22px; }
   .models__grid { grid-template-columns: 1fr; }
