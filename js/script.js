@@ -94,6 +94,7 @@ var CONFIG = {
     var property = form.property.value;
     var timeline = form.timeline.value;
     var firstTime = form.querySelector('input[name="firstTimeBuyer"]:checked');
+    var withAgent = form.querySelector('input[name="workingWithAgent"]:checked');
 
     setError('fullName', fullName ? '' : 'Please enter your full name.');
     if (!fullName) ok = false;
@@ -111,6 +112,9 @@ var CONFIG = {
 
     setError('firstTimeBuyer', firstTime ? '' : 'Please select an option.');
     if (!firstTime) ok = false;
+
+    setError('workingWithAgent', withAgent ? '' : 'Please select an option.');
+    if (!withAgent) ok = false;
 
     setError('timeline', timeline ? '' : 'Please select your timeline.');
     if (!timeline) ok = false;
@@ -136,6 +140,7 @@ var CONFIG = {
       email: form.email.value.trim(),
       property: form.property.value,
       firstTimeBuyer: (form.querySelector('input[name="firstTimeBuyer"]:checked') || {}).value || '',
+      workingWithAgent: (form.querySelector('input[name="workingWithAgent"]:checked') || {}).value || '',
       timeline: form.timeline.value,
       source: form.source.value,
       page: 'LP1.balwantkingra.com',
