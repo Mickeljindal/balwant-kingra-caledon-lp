@@ -146,10 +146,8 @@ var CONFIG = {
     submitBtn.disabled = true;
     formError.textContent = '';
 
-    // Fire a Meta Pixel Lead event if available.
-    if (window.fbq) { try { fbq('track', 'Lead'); } catch (err) {} }
-
     function onSuccess() {
+      // Lead event fires on the /thank-you page load (single source of truth).
       window.location.href = CONFIG.thankYouUrl;
     }
 
