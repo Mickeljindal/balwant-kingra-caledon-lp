@@ -14,6 +14,12 @@
 
 session_start();
 
+// Never cache this page — KloudBean/CDN caches GET responses by default,
+// which would show stale lead data. Force fresh every time.
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Pragma: no-cache');
+header('Expires: 0');
+
 // ---- CONFIG ----
 $PASSWORD_HASH = '$2y$05$JjehDgw3YGPMk355v/KjKeUtjGeHImx.K0m/FmW5HFDtH2VqO.0yy'; // "changeme" — REPLACE THIS
 $CSV_FILE = __DIR__ . '/leads/leads.csv';
