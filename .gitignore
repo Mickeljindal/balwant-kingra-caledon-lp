@@ -1,2 +1,6 @@
 .DS_Store
 Thumbs.db
+
+# Never commit captured lead data
+leads/leads.csv
+leads/*.csv

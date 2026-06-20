@@ -6,11 +6,15 @@
 var CONFIG = {
   // Calendly booking link, e.g. 'https://calendly.com/balwantkingra/consultation'
   calendlyUrl: 'https://calendly.com/balwantkingra',
-  // Where to POST the lead form data (webhook / Zapier / Make / serverless).
-  // Leave '' to skip the network call and just redirect (useful for testing).
-  webhookUrl: '',
   // Page to redirect to after a successful submission.
-  thankYouUrl: '/thank-you'
+  thankYouUrl: '/thank-you',
+
+  // ---- EmailJS settings (get these from https://dashboard.emailjs.com) ----
+  emailjs: {
+    publicKey:  'Wg1ZmfcL8fOmefyC5',  // Account → General → Public Key
+    serviceId:  'service_bu9mxsm',     // Email Services → your service
+    templateId: 'template_lyg0ijt'     // Email Templates → your template
+  }
 };
 
 (function () {
@@ -146,10 +150,24 @@ var CONFIG = {
       page: 'LP1.balwantkingra.com',
       submittedAt: new Date().toISOString()
     };
+    // Populate the template's {{name}} (From Name) and {{title}} (Subject) fields.
+    data.name = data.fullName;
+    data.title = data.fullName + ' — ' + data.property;
 
     submitBtn.classList.add('is-loading');
     submitBtn.disabled = true;
     formError.textContent = '';
+
+    // Fire-and-forget: save a server-side backup copy of the lead.
+    // Runs in parallel and never blocks the email flow or redirect.
+    try {
+      fetch('save-lead.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+        keepalive: true
+      }).catch(function () {});
+    } catch (e) {}
 
     function onSuccess() {
       // Lead event fires on the /thank-you page load (single source of truth).
@@ -162,21 +180,20 @@ var CONFIG = {
       formError.textContent = 'Something went wrong. Please try again or call Balwant directly at 647-293-7008.';
     }
 
-    if (!CONFIG.webhookUrl) {
-      // No webhook configured yet — redirect so the flow can be tested.
+    if (!CONFIG.emailjs || !window.emailjs || CONFIG.emailjs.publicKey === 'YOUR_PUBLIC_KEY') {
+      // EmailJS not configured yet — redirect so the flow can still be tested.
       onSuccess();
       return;
     }
 
-    fetch(CONFIG.webhookUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    })
-      .then(function (res) {
-        if (!res.ok) throw new Error('Bad response');
+    emailjs
+      .send(CONFIG.emailjs.serviceId, CONFIG.emailjs.templateId, data, CONFIG.emailjs.publicKey)
+      .then(function () {
         onSuccess();
       })
-      .catch(onFailure);
+      .catch(function (err) {
+        if (window.console) console.error('EmailJS error:', err);
+        onFailure();
+      });
   });
 })();

@@ -1,0 +1,3 @@
+# This folder stores leads.csv on the server (created automatically on first submission).
+# Public web access is blocked by .htaccess.
+# leads.csv itself is gitignored so real lead data is never committed.
