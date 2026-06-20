@@ -158,15 +158,22 @@ var CONFIG = {
     submitBtn.disabled = true;
     formError.textContent = '';
 
-    // Fire-and-forget: save a server-side backup copy of the lead.
-    // Runs in parallel and never blocks the email flow or redirect.
+    // Save a server-side backup copy of the lead. sendBeacon is designed to
+    // reliably deliver data even as the page navigates away (the redirect below).
     try {
-      fetch('save-lead.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-        keepalive: true
-      }).catch(function () {});
+      var saved = false;
+      if (navigator.sendBeacon) {
+        var blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+        saved = navigator.sendBeacon('save-lead.php', blob);
+      }
+      if (!saved) {
+        fetch('save-lead.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+          keepalive: true
+        }).catch(function () {});
+      }
     } catch (e) {}
 
     function onSuccess() {
