@@ -35,7 +35,7 @@ var CONFIG = {
 
   /* ---------- Meta Pixel: ViewContent on property card engagement ---------- */
   document.querySelectorAll('.js-property').forEach(function (btn) {
-    btn.addEventListener('click', function () {
+    function activate() {
       var value = btn.getAttribute('data-property');
       // Fire ViewContent for retargeting segmentation
       if (window.fbq) {
@@ -52,6 +52,14 @@ var CONFIG = {
         }
       }
       scrollToForm();
+    }
+    btn.addEventListener('click', activate);
+    // Keyboard support for non-button elements (role="button")
+    btn.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activate();
+      }
     });
   });
 

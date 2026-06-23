@@ -474,7 +474,16 @@ a { color: inherit; }
   display: flex;
   flex-direction: column;
   gap: 4px;
+  cursor: pointer;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .05s ease;
 }
+.models__item:hover,
+.models__item:focus-visible {
+  border-color: var(--red);
+  box-shadow: var(--shadow);
+  outline: none;
+}
+.models__item:active { transform: translateY(1px); }
 .models__name {
   font-weight: 700;
   color: var(--navy);
@@ -490,6 +499,13 @@ a { color: inherit; }
   color: var(--red);
   margin-top: 4px;
 }
+.models__cta {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-top: 8px;
+}
+.models__action { margin-top: 24px; }
 
 /* ============ SECTION 4 — WHY CALEDON ============ */
 .features {
