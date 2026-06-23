@@ -26,10 +26,61 @@ var CONFIG = {
     if (form) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
+  function scrollToElement(id) {
+    var el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   document.querySelectorAll('.js-scroll').forEach(function (el) {
     el.addEventListener('click', function (e) {
       e.preventDefault();
       scrollToForm();
+    });
+  });
+
+  /* ---------- Hero links — smooth scroll + tracking (Task 2 & 7) ---------- */
+  document.querySelectorAll('.js-hero-link').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var href = link.getAttribute('href');
+      var target = href ? href.replace('#', '') : 'lead-form';
+      scrollToElement(target);
+      // Track
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({
+        event: 'lp_interaction',
+        interaction_type: 'hero_link_click',
+        interaction_detail: link.getAttribute('data-detail') || ''
+      });
+    });
+  });
+
+  /* ---------- Quick-jump chips — smooth scroll + tracking (Task 3 & 7) ---------- */
+  document.querySelectorAll('.js-chip').forEach(function (chip) {
+    chip.addEventListener('click', function (e) {
+      e.preventDefault();
+      var href = chip.getAttribute('href');
+      var target = href ? href.replace('#', '') : 'lead-form';
+      scrollToElement(target);
+      // Track
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({
+        event: 'lp_interaction',
+        interaction_type: 'chip_click',
+        interaction_detail: chip.getAttribute('data-detail') || ''
+      });
+    });
+  });
+
+  /* ---------- Mobile CTA tracking (Task 4 & 7) ---------- */
+  document.querySelectorAll('.js-mobile-cta').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({
+        event: 'lp_interaction',
+        interaction_type: 'mobile_cta_click',
+        interaction_detail: btn.getAttribute('data-property') || ''
+      });
     });
   });
 

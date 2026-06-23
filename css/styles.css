@@ -811,6 +811,143 @@ a { color: inherit; }
 /* =====================================================
    RESPONSIVE — mobile first adjustments
    ===================================================== */
+
+/* ============ HERO LINKS (Task 2) ============ */
+.hero__link {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 2px solid rgba(255,255,255,.45);
+  transition: border-color .15s ease, background .15s ease;
+  padding-bottom: 1px;
+}
+.hero__link:hover,
+.hero__link:focus-visible {
+  border-color: #fff;
+  background: rgba(255,255,255,.1);
+  outline: none;
+}
+.hero__link--sub {
+  color: rgba(255,255,255,.92);
+  border-bottom-color: rgba(255,255,255,.35);
+}
+.hero__link--sub:hover,
+.hero__link--sub:focus-visible {
+  color: #fff;
+  border-color: #fff;
+}
+
+/* ============ QUICK-JUMP CHIPS (Task 3) ============ */
+.hero__chips {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(255,255,255,.12);
+  border: 1.5px solid rgba(255,255,255,.4);
+  text-decoration: none;
+  transition: background .15s ease, border-color .15s ease, transform .05s ease;
+  cursor: pointer;
+}
+.chip:hover,
+.chip:focus-visible {
+  background: rgba(255,255,255,.22);
+  border-color: #fff;
+  outline: none;
+}
+.chip:active { transform: translateY(1px); }
+.chip--accent {
+  background: var(--red);
+  border-color: var(--red);
+}
+.chip--accent:hover,
+.chip--accent:focus-visible {
+  background: var(--red-dark);
+  border-color: var(--red-dark);
+}
+
+/* ============ MOBILE-ONLY CTA (Task 4) ============ */
+.mobile-cta {
+  display: none;
+  padding: 16px;
+  background: var(--grey);
+}
+
+/* ============ MOBILE-ONLY MODELS (Task 5) ============ */
+.mobile-models {
+  display: none;
+  padding: 24px 0;
+  background: var(--grey);
+}
+.mobile-models__heading {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 14px;
+  text-align: center;
+}
+.mobile-models__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+.mobile-models__item {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--red);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  cursor: pointer;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.mobile-models__item:hover,
+.mobile-models__item:focus-visible {
+  border-color: var(--red);
+  box-shadow: var(--shadow);
+  outline: none;
+}
+.mobile-models__item:active { transform: translateY(1px); }
+.mobile-models__name {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 15px;
+}
+.mobile-models__detail {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.mobile-models__cta {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--red);
+  margin-top: 4px;
+}
+
+/* ============ MODELS AFFORDANCE ENHANCEMENTS (Task 6) ============ */
+.models__item {
+  border-left: 4px solid transparent;
+}
+.models__item:hover,
+.models__item:focus-visible {
+  border-left-color: var(--red);
+  background: rgba(226,0,26,.03);
+}
+.models__cta {
+  color: var(--red);
+  font-weight: 700;
+}
 @media (max-width: 900px) {
   .about { grid-template-columns: 1fr; gap: 28px; text-align: center; }
   .about__label { text-align: center; }
@@ -835,6 +972,16 @@ a { color: inherit; }
   .hero__content { padding: 60px 18px; }
   .hero__buttons { flex-direction: column; }
   .hero__buttons .btn { width: 100%; }
+
+  /* Task 3: chips wrap on mobile */
+  .hero__chips { gap: 8px; }
+  .chip { padding: 8px 14px; font-size: 13px; }
+
+  /* Task 4: show mobile CTA */
+  .mobile-cta { display: block; }
+
+  /* Task 5: show mobile models */
+  .mobile-models { display: block; }
 
   .proof-bar__grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .proof-bar__number { font-size: 19px; }
