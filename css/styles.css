@@ -507,6 +507,9 @@ a { color: inherit; }
 }
 .models__action { margin-top: 24px; }
 
+/* Centered call-to-action wrapper for in-page "Book a Call" buttons */
+.section__cta { margin-top: 28px; text-align: center; }
+
 /* ============ SECTION 4 — WHY CALEDON ============ */
 .features {
   display: grid;
@@ -1043,4 +1046,82 @@ a { color: inherit; }
 @media (min-width: 769px) and (max-width: 980px) {
   .features { grid-template-columns: repeat(4, 1fr); }
   .about { grid-template-columns: 280px 1fr; gap: 32px; }
+}
+
+/* =====================================================
+   HEATMAP OPTIMIZATIONS (Clarity insights)
+   - Low mobile scroll depth -> scroll cue + tighter hero
+   - Dead clicks on text/cards -> full-card tap targets
+   - Weak CTA pull -> pulsing primary CTA + assurance line
+   ===================================================== */
+
+/* Reassurance microcopy under the hero CTA */
+.hero__assurance {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .9);
+  margin: 16px 0 0;
+  letter-spacing: .2px;
+}
+
+/* Primary CTA pulse to draw the eye above the fold */
+.btn--pulse { animation: cta-pulse 2.2s ease-in-out infinite; }
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(226, 0, 26, .55); }
+  50% { box-shadow: 0 0 0 14px rgba(226, 0, 26, 0); }
+}
+
+/* Animated scroll-down cue — signals there's more below the fold */
+.hero__scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  opacity: .92;
+  transition: opacity .15s ease;
+}
+.hero__scroll:hover,
+.hero__scroll:focus-visible { opacity: 1; outline: none; }
+.hero__scroll-chevron {
+  width: 26px;
+  height: 26px;
+  animation: cue-bounce 1.6s ease-in-out infinite;
+}
+@keyframes cue-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* Whole property card is tappable (kills dead clicks on card text/images) */
+.js-card { cursor: pointer; }
+.js-card:hover {
+  border-color: var(--red);
+  box-shadow: 0 10px 30px rgba(13, 27, 42, 0.14);
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .btn--pulse,
+  .hero__scroll-chevron { animation: none; }
+}
+
+/* Mobile: shrink the hero so the next section peeks, leave room for the cue */
+@media (max-width: 768px) {
+  .hero { min-height: 82vh; }
+  .hero__content { padding: 40px 18px 78px; }
+  .hero__title { margin: 12px 0 14px; }
+  .hero__assurance { font-size: 13px; margin-top: 14px; }
+  .hero__chips { margin-top: 16px; }
+  .hero__scroll-text { font-size: 11px; }
 }

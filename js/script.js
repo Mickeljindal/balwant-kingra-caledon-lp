@@ -114,6 +114,32 @@ var CONFIG = {
     });
   });
 
+  /* ---------- Hero scroll cue — nudge users below the fold ---------- */
+  document.querySelectorAll('.js-scroll-cue').forEach(function (cue) {
+    cue.addEventListener('click', function (e) {
+      e.preventDefault();
+      var href = cue.getAttribute('href');
+      var target = href ? href.replace('#', '') : 'homes';
+      scrollToElement(target);
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({
+        event: 'lp_interaction',
+        interaction_type: 'scroll_cue_click',
+        interaction_detail: target
+      });
+    });
+  });
+
+  /* ---------- Whole property card is tappable (reduce dead clicks) ---------- */
+  document.querySelectorAll('.js-card').forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      // Let real links/buttons inside the card behave normally.
+      if (e.target.closest('a, button')) return;
+      var trigger = card.querySelector('.js-property');
+      if (trigger) trigger.click();
+    });
+  });
+
   /* ---------- Calendly popup ---------- */
   document.querySelectorAll('.js-calendly').forEach(function (btn) {
     btn.addEventListener('click', function () {

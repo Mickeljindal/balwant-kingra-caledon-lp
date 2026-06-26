@@ -102,9 +102,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 class="hero__title">Two New Communities In Caledon: <a href="#models" class="hero__link js-hero-link" data-detail="towns">Towns</a> | <a href="#models" class="hero__link js-hero-link" data-detail="semis">Semi's</a> | <a href="#models" class="hero__link js-hero-link" data-detail="singles">Single Detached Homes</a></h1>
     <p class="hero__sub"><a href="#lead-form" class="hero__link hero__link--sub js-hero-link" data-detail="pricing">Freehold townhomes from $729,990</a>. Semi-detached from the mid $800s. Flexible deposits on both. Five minutes from Costco and steps from the GO station.</p>
     <div class="hero__buttons">
-      <button type="button" class="btn btn--red js-calendly">Book a Free Consultation</button>
+      <a href="#lead-form" class="btn btn--red btn--pulse js-scroll">Book a Free Consultation</a>
       <a href="tel:6472937008" class="btn btn--outline-white">Call Balwant: 647-293-7008</a>
     </div>
+    <p class="hero__assurance">100% free &middot; No obligation &middot; Personal reply within the hour</p>
     <!-- Quick-jump chips (Task 3) -->
     <div class="hero__chips">
       <a href="#models" class="chip js-chip" data-detail="townhomes">Townhomes</a>
@@ -113,6 +114,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#lead-form" class="chip chip--accent js-chip" data-detail="get-pricing">Get Pricing</a>
     </div>
   </div>
+  <a href="#homes" class="hero__scroll js-scroll-cue" aria-label="Scroll down to see homes and pricing">
+    <span class="hero__scroll-text">See homes &amp; pricing</span>
+    <svg class="hero__scroll-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </a>
 </section>
 
 <!-- ============ MOBILE-ONLY PRIMARY CTA (Task 4) ============ -->
@@ -213,13 +218,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ============ SECTION 3 — PROPERTY CARDS ============ -->
-<section class="section section--grey">
+<section class="section section--grey" id="homes">
   <div class="container">
     <h2 class="section__heading">Choose Your Home. I'll Handle the Rest.</h2>
     <div class="cards">
 
       <!-- Card 1 — CaledonClub -->
-      <article class="card">
+      <article class="card js-card" data-property="CaledonClub">
         <div class="card__media">
           <span class="pill pill--red card__badge">Final Phase — Act Fast</span>
           <img src="assets/caledonclub.png" alt="CaledonClub — Brand new semi-detached homes and singles in Caledon, Ontario" width="600" height="400" loading="lazy" />
@@ -249,7 +254,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </article>
 
       <!-- Card 2 — Wildfield Village -->
-      <article class="card">
+      <article class="card js-card" data-property="Wildfield Village">
         <div class="card__media">
           <span class="pill pill--amber card__badge">Coming Soon — Register Now</span>
           <img src="assets/wildfield-village.png" alt="Wildfield Village — Brand new semi-detached homes starting from the mid $800s in Caledon, Ontario" width="600" height="400" loading="lazy" />
@@ -336,6 +341,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         referrerpolicy="no-referrer-when-downgrade"
         allowfullscreen></iframe>
     </div>
+    <div class="section__cta">
+      <a href="#lead-form" class="btn btn--red js-scroll">Book a Free Call</a>
+    </div>
   </div>
 </section>
 
@@ -379,6 +387,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="trust__text">GTA &amp; Caledon specialist</p>
       </div>
     </div>
+    <div class="section__cta">
+      <a href="#lead-form" class="btn btn--red js-scroll">Book a Free Call</a>
+    </div>
   </div>
 </section>
 
@@ -397,7 +408,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="about__stars">★★★★★ <span class="about__reviews">Google Verified Reviews</span></p>
       <img src="assets/remax-logo-white.png" alt="REMAX Excellence" width="200" height="60" loading="lazy" class="about__remax" />
       <div>
-        <button type="button" class="btn btn--outline-white js-calendly">Book a Free Call with Balwant</button>
+        <a href="#lead-form" class="btn btn--outline-white js-scroll">Book a Free Call with Balwant</a>
       </div>
     </div>
   </div>
