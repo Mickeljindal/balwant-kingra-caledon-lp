@@ -1144,3 +1144,150 @@ a { color: inherit; }
   .announce__inner { flex-wrap: wrap; gap: 6px 8px; }
   .announce__arrow { font-size: 11px; padding: 2px 9px; }
 }
+
+/* =====================================================
+   FORM-FIRST HERO REDESIGN
+   Simplified, form above the fold, FOMO countdown,
+   women/family-oriented messaging.
+   ===================================================== */
+
+/* Hook / copy column */
+.lead-hero__copy .pill { margin-bottom: 14px; }
+.lead-hero__title {
+  font-size: 40px;
+  line-height: 1.1;
+  font-weight: 700;
+  margin: 0 0 14px;
+  letter-spacing: -0.5px;
+}
+.lead-hero__sub {
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, .9);
+  margin: 0 0 22px;
+  max-width: 30em;
+}
+.lead-hero__sub strong { color: #fff; }
+
+/* FOMO block */
+.fomo {
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 14px;
+  padding: 16px 18px;
+  max-width: 380px;
+}
+.fomo__label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, .85);
+  margin-bottom: 10px;
+}
+.countdown { display: flex; gap: 8px; }
+.countdown__unit {
+  flex: 1;
+  background: rgba(0, 0, 0, .28);
+  border-radius: 10px;
+  padding: 8px 4px;
+  text-align: center;
+}
+.countdown__num {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.countdown__label {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: .75;
+  margin-top: 4px;
+}
+.fomo__units {
+  margin: 12px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .92);
+}
+.fomo__units strong { color: var(--red-light, #ff6b6b); }
+.fomo__ast { opacity: .7; }
+
+/* Form card */
+.lead-hero__form-card {
+  background: #fff;
+  color: var(--navy, #0D1B2A);
+  border-radius: 16px;
+  padding: 26px 24px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .35);
+  position: relative;
+}
+.form-card__title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: var(--navy, #0D1B2A);
+}
+.form-card__sub {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #5a6472;
+  margin: 0 0 18px;
+}
+.lead-hero__form-card .form { margin-top: 0; }
+
+/* Trust points + proof (below the form on mobile) */
+.lead-hero__points {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+  display: grid;
+  gap: 10px;
+}
+.lead-hero__points li {
+  position: relative;
+  padding-left: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, .95);
+}
+.lead-hero__points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--red, #E2001A);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 13px;
+}
+.lead-hero__proof {
+  margin: 18px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .9);
+}
+
+/* Tablet / mobile */
+@media (max-width: 900px) {
+  .lead-hero__title { font-size: 30px; }
+  .lead-hero__sub { font-size: 16px; margin-bottom: 18px; }
+  .fomo { max-width: none; }
+  .lead-hero__form-card { padding: 22px 18px; }
+  .lead-hero__extra { margin-top: 2px; }
+}
+@media (max-width: 480px) {
+  .lead-hero__title { font-size: 26px; }
+  .countdown__num { font-size: 24px; }
+  .form-card__title { font-size: 20px; }
+}

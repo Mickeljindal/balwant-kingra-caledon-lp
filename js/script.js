@@ -167,6 +167,36 @@ var CONFIG = {
     });
   });
 
+  /* ---------- FOMO countdown — targets end of the current month ---------- */
+  (function initCountdown() {
+    var cd = document.getElementById('countdown');
+    if (!cd) return;
+
+    function target() {
+      var now = new Date();
+      // Last moment of the current month (resets to next month once it passes).
+      return new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
+    }
+
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+    function set(key, value) {
+      var el = cd.querySelector('[data-cd="' + key + '"]');
+      if (el) el.textContent = pad(value);
+    }
+
+    function tick() {
+      var diff = Math.max(0, target() - new Date());
+      set('days', Math.floor(diff / 86400000));
+      set('hours', Math.floor((diff % 86400000) / 3600000));
+      set('mins', Math.floor((diff % 3600000) / 60000));
+      set('secs', Math.floor((diff % 60000) / 1000));
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
+
   /* ---------- Lead form validation + submit ---------- */
   var form = document.getElementById('leadForm');
   if (!form) return;
@@ -195,9 +225,6 @@ var CONFIG = {
     var phone = form.phone.value.trim();
     var email = form.email.value.trim();
     var property = form.property.value;
-    var timeline = form.timeline.value;
-    var firstTime = form.querySelector('input[name="firstTimeBuyer"]:checked');
-    var withAgent = form.querySelector('input[name="workingWithAgent"]:checked');
 
     setError('fullName', fullName ? '' : 'Please enter your full name.');
     if (!fullName) ok = false;
@@ -210,17 +237,8 @@ var CONFIG = {
     else if (!isValidEmail(email)) { setError('email', 'Please enter a valid email address.'); ok = false; }
     else setError('email', '');
 
-    setError('property', property ? '' : 'Please choose a property.');
+    setError('property', property ? '' : 'Please choose a community.');
     if (!property) ok = false;
-
-    setError('firstTimeBuyer', firstTime ? '' : 'Please select an option.');
-    if (!firstTime) ok = false;
-
-    setError('workingWithAgent', withAgent ? '' : 'Please select an option.');
-    if (!withAgent) ok = false;
-
-    setError('timeline', timeline ? '' : 'Please select your timeline.');
-    if (!timeline) ok = false;
 
     return ok;
   }
@@ -242,10 +260,7 @@ var CONFIG = {
       phone: form.phone.value.trim(),
       email: form.email.value.trim(),
       property: form.property.value,
-      firstTimeBuyer: (form.querySelector('input[name="firstTimeBuyer"]:checked') || {}).value || '',
-      workingWithAgent: (form.querySelector('input[name="workingWithAgent"]:checked') || {}).value || '',
-      timeline: form.timeline.value,
-      source: form.source.value,
+      timeline: form.timeline ? form.timeline.value : '',
       page: 'LP1.balwantkingra.com',
       submittedAt: new Date().toISOString()
     };
