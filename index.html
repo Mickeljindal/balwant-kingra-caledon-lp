@@ -65,7 +65,7 @@ html,body{overflow-x:hidden}
 .hero{position:relative;width:100%;min-height:86vh;display:flex;align-items:center;justify-content:center;text-align:center;background:#0D1B2A url('assets/hero.png') center/cover no-repeat;color:#fff}
 .hero__overlay{position:absolute;inset:0;background:rgba(13,27,42,.65)}
 .hero__content{position:relative;z-index:1;max-width:820px;padding:80px 20px}
-@media(max-width:768px){.nav__inner{padding:10px 16px;gap:10px}.nav__logo-img{height:32px}}
+@media(max-width:768px){.nav__inner{padding:10px 16px;gap:10px}.nav__logo-img{height:32px}.hero{min-height:64vh}.hero__content{padding:28px 18px 66px}}
 @media(max-width:480px){.nav__logo-text{display:none}}
 </style>
 </head>
@@ -77,10 +77,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ============ TOP ANNOUNCEMENT / FOMO BAR ============ -->
 <div class="announce" id="top">
-  <div class="announce__inner">
+  <a href="#lead-form" class="announce__inner js-announce" aria-label="Final phase now selling at CaledonClub — get floor plans and pricing">
     <span class="announce__dot"></span>
     <span class="announce__text"><strong>Final phase now selling</strong> at CaledonClub — limited units remaining. Save up to $130,000 before they're gone.</span>
-  </div>
+    <span class="announce__arrow">Get Pricing &rarr;</span>
+  </a>
 </div>
 
 <!-- ============ SECTION 1 — NAVIGATION ============ -->

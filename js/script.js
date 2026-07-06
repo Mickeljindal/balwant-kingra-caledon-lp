@@ -114,6 +114,20 @@ var CONFIG = {
     });
   });
 
+  /* ---------- Announcement bar — clickable CTA (highest observed intent) ---------- */
+  document.querySelectorAll('.js-announce').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      scrollToForm();
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({
+        event: 'lp_interaction',
+        interaction_type: 'announce_bar_click',
+        interaction_detail: 'final_phase_fomo'
+      });
+    });
+  });
+
   /* ---------- Hero scroll cue — nudge users below the fold ---------- */
   document.querySelectorAll('.js-scroll-cue').forEach(function (cue) {
     cue.addEventListener('click', function (e) {
